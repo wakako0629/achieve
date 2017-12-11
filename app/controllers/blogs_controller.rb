@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   
-    before_action :set_blog, only: [:show, :edit, :update, :destroy]
+    before_action :set_blog, only: [:show, :edit, :update, :destroy ]
   
     def index
       @blogs = Blog.all
@@ -15,7 +15,6 @@ class BlogsController < ApplicationController
     end
     
 
-  
    def confirm
      @blog = Blog.new(blog_params)
      render :new if @blog.invalid?
@@ -24,10 +23,8 @@ class BlogsController < ApplicationController
    def create
      @blog = Blog.new(blog_params)
      if @blog.save
-       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
        redirect_to blogs_path, notice: "ブログを作成しました！"
      else
-       # 入力フォームを再描画します。
        render 'new'
      end
    end
