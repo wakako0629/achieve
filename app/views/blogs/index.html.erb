@@ -1,24 +1,56 @@
-<h1>ブログ一覧</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Achieve</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+</head><body>
+
+  <header>
+    <ul>
+      <li><a href="#">Achieve</a></li>
+      <li><a href="#">トップページ</a></li>
+      <li><%= link_to '新しくブログを投稿する', new_blog_path %></li>
+    </ul>
+  </header>
+  <section class="main-header">
+    <%= image_tag('achieve.png') %>
+  </section>
+
+
+    <section class="about">
+    <h1>About Achieve</h1>
+    <p>
+      Achieveを一言で表すと、エンジニア用ブログ投稿アプリです。<br>
+      エンジニアによって投稿された開発の日々をのぞいてみる事が出来ます。
+    </p>
+  </section>
+
+<h1>Blog一覧</h1>
 <p><%= notice %></p>
 
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th></th>
-  </tr>
+<div class="container">
+  <div class="row">
+    <% @blogs.each do |blog| %>
+      <div class="col-xs-12 col-md-6 blog-panel">
+        <h2><%= blog.title %></h2>
+        <p><%= blog.content %></p>
+        <div class="blog-links">
+          <%= link_to 'Show', blog, class: 'btn btn-default' %>
+          <%= link_to 'Edit', edit_blog_path(blog), class: 'btn btn-info' %> |
+          <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<% @blogs.each do |blog| %>
-  <tr>
-    <td><%= blog.title %></td>
-    <td><%= blog.content %></td>
-    <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
-    <td><%= link_to "ブログを編集する", edit_blog_path(blog.id) %></td>
-    <td><%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete,data: { confirm: '本当に削除していいですか？' } %></td>
-  </tr>
-<% end %>
-
-</table>
-
-<br><%= link_to 'DIVE INTO CODEのページへ', 'https://diveintocode.jp/'  %></br>
-<br><%= link_to 'ブログ一覧画面にもどる', '/blogs' %></br>
-<br><%= link_to '新しくブログを投稿する', new_blog_path %></br>
+<footer>
+    <p>運営会社DIVE INTO CODE株式会社</p>
+    <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
+  </footer>
+  
+  </body>
+</html>
+  

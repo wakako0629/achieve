@@ -61,6 +61,5 @@ class BlogsController < ApplicationController
        @blog = Blog.find(params[:id])
       end
       
-end
+  end
 
- 
