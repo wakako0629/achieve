@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   
     before_action :set_blog, only: [:show, :edit, :update, :destroy ]
+    before_action :login_confirm, only: [:show, :edit, :new ,:update ,:destroy]
   
     def index
       @blogs = Blog.all
@@ -50,6 +51,8 @@ class BlogsController < ApplicationController
      @blog.destroy
      redirect_to blogs_path, notice:"ブログを削除しました！"
    end
+   
+
   
    private
       def blog_params
@@ -61,5 +64,11 @@ class BlogsController < ApplicationController
        @blog = Blog.find(params[:id])
       end
       
-  end
+      def login_confirm
+          redirect_to new_session_path unless !current_user.nil?
+      end
+      
+         
+    
+end
 
