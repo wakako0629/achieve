@@ -9,12 +9,17 @@
     <div class="row">
      <% @favorites_blogs.each do |favorites_blog| %>
        <div class="col-xs-12 col-md-6 blog-panel">
-         <h2><%= favorites_blog.title %></h2>
-         <p><%= favorites_blog.content %></p>
+         <h2><%="Title:" %><%= favorites_blog.title %></h2>
+         <p><%="Content:" %><%= favorites_blog.content %></p>
+         <p><%="User:" %><%= favorites_blog.user.name %></p>
          <div class="blog-links">
            <%= link_to 'Show', favorites_blog, class: 'btn btn-default' %>
-           <%= link_to 'Edit', edit_blog_path(favorites_blog), class: 'btn btn-info' %>
-           <%= link_to 'Destroy', favorites_blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+           <%  if favorites_blog.user_id == current_user.id %>
+             <%= link_to 'Edit', edit_blog_path(favorites_blog), class: 'btn btn-info' %>
+             <%= link_to 'Destroy', favorites_blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+           <% else %>
+
+           <% end %>
         </div>
       </div>
     <% end %>

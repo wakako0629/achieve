@@ -20,8 +20,9 @@
   <div class="row">
     <% @blogs.each do |blog| %>
       <div class="col-xs-12 col-md-6 blog-panel">
-        <h2><%= blog.title %></h2>
-        <p><%= blog.content %></p>
+        <h2><%="Title:" %><%= blog.title %></h2>
+        <p><%="Content:" %><%= blog.content %></p>
+         <p><%="User:" %><%= blog.user.name %></p>
         <div class="blog-links">
           <%= link_to 'Show', blog, class: 'btn btn-default' %>
           <%  if blog.user_id == current_user.id %>
