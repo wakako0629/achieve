@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :contacts
   resources :blogs do
     collection do
       post :confirm
@@ -16,5 +15,7 @@ Rails.application.routes.draw do
    if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
    end
+
+
 
 end
