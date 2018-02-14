@@ -17,6 +17,10 @@
 
   <%= f.label :email %>
   <%= f.email_field :email %>
+  
+  <%= f.label :icon %>
+  <%= f.file_field :icon,id: :user_icon %>
+  <%= f.hidden_field :icon_cache %>
 
   <%= f.label :password %>
   <%= f.password_field :password %>
