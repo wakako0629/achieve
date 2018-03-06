@@ -8,27 +8,35 @@
 <p><strong>Icon:</strong></p>
 <p><%= image_tag @user.icon %></p>
 
-
 <div class="container">
-    <div class="row">
-     <% @favorites_blogs.each do |favorites_blog| %>
-       <div class="col-xs-12 col-md-6 blog-panel">
-         <h2><%="Title:" %><%= favorites_blog.title %></h2>
-         <p><%="Content:" %><%= favorites_blog.content %></p>
-         <p><%="User:" %><%= favorites_blog.user.name %></p>
-         <div class="blog-links">
-           <%= link_to 'Show', favorites_blog, class: 'btn btn-default' %>
-           <%  if favorites_blog.user_id == current_user.id %>
-             <%= link_to 'Edit', edit_blog_path(favorites_blog), class: 'btn btn-info' %>
-             <%= link_to 'Destroy', favorites_blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <div class="row">
+    <% @favorites_blogs.each do |favorites_blog| %>
+      <div class="col-xs-12 col-md-12 blog-panel">
+         <h2><%="User:" %><%= favorites_blog.user.name %></h2>
+         <p><%= image_tag(favorites_blog.image_url) unless favorites_blog.image.blank? %></p>
+         <p><%="Comment:" %><%= favorites_blog.content %></p>
+        <div class="blog-links">
+          <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Action <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+          <li><%= link_to 'Show', favorites_blog, class: 'btn btn-default' %></li>
+          <%  if favorites_blog.user_id == current_user.id %>
+             <li><%= link_to 'Edit', edit_blog_path(favorites_blog), class: 'btn btn-info' %></li>
+             <li><%= link_to 'Destroy', favorites_blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></li>
            <% else %>
 
            <% end %>
+           </ul>
+        </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+</div>
+  
 
   </body>
 </html>
