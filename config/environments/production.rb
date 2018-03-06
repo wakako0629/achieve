@@ -91,8 +91,7 @@ Rails.application.configure do
   
   config.action_mailer.default_url_options = { host: 'nameless-dusk-88606.herokuapp.com' }
 ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings =
-{
+ActionMailer::Base.smtp_settings = {
  user_name: ENV['SENDGRID_USERNAME'],
  password: ENV['SENDGRID_PASSWORD'],
  domain: "heroku.com",
@@ -102,3 +101,4 @@ ActionMailer::Base.smtp_settings =
  enable_starttls_auto: true
 }
 end
+
