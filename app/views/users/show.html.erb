@@ -13,7 +13,7 @@
     <% @favorites_blogs.each do |favorites_blog| %>
       <div class="col-xs-12 col-md-12 blog-panel">
          <h2><%="User:" %><%= favorites_blog.user.name %></h2>
-         <p><%= image_tag(favorites_blog.image_url) unless favorites_blog.image.blank? %></p>
+         <p><%= image_tag(favorites_blog.image_url,:size => "250x250") unless favorites_blog.image.blank? %></p>
          <p><%="Comment:" %><%= favorites_blog.content %></p>
         <div class="blog-links">
           <div class="btn-group">

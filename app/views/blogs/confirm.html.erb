@@ -9,7 +9,7 @@
   <p>タイトル:<%= @blog.title %></p>
   <p>本文:<%= @blog.content %></p>
   <% unless @blog.image.blank? %>
-      <%= image_tag(@blog.image.url) %>
+      <%= image_tag(@blog.image.url,:size => "250x250") %>
       <%= hidden_field_tag :"cache[image]",@blog.image.cache_name %>
   <% end %>
   <p></p>
