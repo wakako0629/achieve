@@ -7,30 +7,26 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-<body>
-  <header>
-    <ul>
-    <% if logged_in? %>
-      <li><%= link_to 'InstaAPP', '/blogs' %></li>
-      <li><%= link_to "Profile", user_path(current_user.id) %></li>
-      <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
-    <% else %>
-      <li><%= link_to "Sign up", new_user_path %></li>
-      <li><%= link_to "Login", new_session_path %></li>
-    <% end %>
-    </ul>
-  </header>
-   <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    
-<%= yield %>
-
-<footer>
-    <p>運営会社DIVE INTO CODE株式会社</p>
-    <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
-  </footer>
-  
+  <body>
+ 　 <header>
+    　 <ul>
+    　     <% if logged_in? %>
+            <li><%= link_to 'InstaAPP', '/blogs' %></li>
+            <li><%= link_to "Profile", user_path(current_user.id) %></li>
+            <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign up", new_user_path %></li>
+            <li><%= link_to "Login", new_session_path %></li>
+          <% end %>
+    　 </ul>
+   </header>
+       
+    <%= yield %>
+   
+   <footer>
+    　<p>運営会社DIVE INTO CODE株式会社</p>
+    　<p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
+ 　 </footer>
   </body>
 
 </html>

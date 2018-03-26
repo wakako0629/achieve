@@ -1,8 +1,8 @@
 <html>
 <body>
 
-<%= form_with(model: @blog, local: true ,url: choose_new_or_edit ) do |form| %>
- <% if @blog.errors.any? %>
+   <%= form_with(model: @blog, local: true ,url: choose_new_or_edit ) do |form| %>
+   <% if @blog.errors.any? %>
     <div id="error_explanation">
         <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
         <ul>
@@ -12,26 +12,29 @@
         </ul>
     </div>
   <% end %>
-
-  <div class="blog_title">
+<div class="container">
+ <div class="row">
     <%= form.label :title %>
     <%= form.text_field :title %>
-  </div>
-  <div class="blog_content">
+    
     <%= form.label :content %>
     <%= form.text_field :content %>
-  </div>
-  <div class="field">
+
+
     <%= form.label :image %>
     <center><%= form.file_field :image, id: :blog_image %></center>
     <%= form.hidden_field :image_cache %>
-  </div>
-
   
-  <%= form.submit %>
+ <br><%= form.submit %>
+  
+  
 <% end %>
 
-<%= link_to '一覧に戻る',blogs_path %>
+<br>
+<br><%= link_to '一覧に戻る',blogs_path %>
+
+</div>
+</div>
 
 
 </body>
